@@ -1,5 +1,7 @@
 import express from "express";
 import "dotenv/config";
+import serverless from 'serverless-http';
+
 import cors from "cors";
 import http from "http";
 import { connectDB } from "./lib/db.js";
@@ -58,3 +60,6 @@ const PORT = process.env.PORT || 5000;
 server.listen(PORT, ()=> console.log("Server is running on the port : " + PORT)
 );
 // app.listen(PORT,()=>console.log(`Server started at port :${PORT}`));
+
+const handler=serverless(app);
+export {handler};
